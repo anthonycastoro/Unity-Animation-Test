@@ -1,0 +1,15 @@
+/home/runner/Unity-Animation-Test/bin/Debug/net6.0/main
+/home/runner/Unity-Animation-Test/bin/Debug/net6.0/main.deps.json
+/home/runner/Unity-Animation-Test/bin/Debug/net6.0/main.runtimeconfig.json
+/home/runner/Unity-Animation-Test/bin/Debug/net6.0/main.dll
+/home/runner/Unity-Animation-Test/bin/Debug/net6.0/ref/main.dll
+/home/runner/Unity-Animation-Test/bin/Debug/net6.0/main.pdb
+/home/runner/Unity-Animation-Test/obj/Debug/net6.0/main.csproj.AssemblyReference.cache
+/home/runner/Unity-Animation-Test/obj/Debug/net6.0/main.GeneratedMSBuildEditorConfig.editorconfig
+/home/runner/Unity-Animation-Test/obj/Debug/net6.0/main.AssemblyInfoInputs.cache
+/home/runner/Unity-Animation-Test/obj/Debug/net6.0/main.AssemblyInfo.cs
+/home/runner/Unity-Animation-Test/obj/Debug/net6.0/main.csproj.CoreCompileInputs.cache
+/home/runner/Unity-Animation-Test/obj/Debug/net6.0/main.dll
+/home/runner/Unity-Animation-Test/obj/Debug/net6.0/ref/main.dll
+/home/runner/Unity-Animation-Test/obj/Debug/net6.0/main.pdb
+/home/runner/Unity-Animation-Test/obj/Debug/net6.0/main.genruntimeconfig.cache

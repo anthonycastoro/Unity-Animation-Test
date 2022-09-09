@@ -15,7 +15,7 @@ public enum EasingStyle {
 	Circular,
 	Back,
 	Elastic,
-	Bounce,
+	//Bounce,
 }
 
 public enum EasingDirection {
@@ -30,8 +30,9 @@ public enum EasingDirection {
 public class Tween {
 	// Instance Properties
 	
-	public Info Instructions;
-	public object Object;
+	public readonly Info Instructions;
+	public readonly object GameObject;
+	
 	public bool Playing;
 	public float StartTime;
 	
@@ -40,7 +41,7 @@ public class Tween {
 
 	// Static Variables
 	
-	static List<Tween> TweenInstances = new List<Tween>();
+	static Tween[] TweenInstances = new Tween[] {};
 	
 	public static float Tick {
 		get {
@@ -55,7 +56,7 @@ public class Tween {
 	
 	public Tween(object GameObject, Info info) {
 		this.Instructions = info;
-		this.Object = GameObject;
+		this.GameObject = GameObject;
 		this.Properties = new Dictionary<string, object>() {};
 		Tween.TweenInstances.Add(this);
 	}
@@ -72,12 +73,12 @@ public class Tween {
 		this.StartTime = Tween.Tick;
 		return this;
 	}
-
+	
 	// Overrides
 
 	public override string ToString() {
 		if (this.Properties.Count >= 1) {
-			string truncate = this.Properties.Count > 1 ? "..." : "";
+			string truncate = this.Properties.Count > 1 ? $", +{this.Properties.Count - 1} more" : "";
 			
 			foreach (KeyValuePair<string, object> pair in this.Properties) {
 				return $"Tween ({pair.Key} = {pair.Value}{truncate})";
@@ -151,20 +152,20 @@ public class Tween {
 					result = (float) (-pow(2, 10 * x - 10) * sin((x * 10 - 10.75) * (2 * pi) / 3));
 					break;
 				
-				case EasingStyle.Bounce:
-					float n1 = 7.5625f;
-					float d1 = 2.75f;
+				// case EasingStyle.Bounce:
+				// 	float n1 = 7.5625f;
+				// 	float d1 = 2.75f;
 					
-					if (x < 1 / d1) {
-					    result = n1 * x * x;
-					} else if (x < 2 / d1) {
-					    result = n1 * (x - 1.5f / d1) * x + 0.75f;
-					} else if (x < 2.5 / d1) {
-					    result = n1 * (x - 2.25f / d1) * x + 0.9375f;
-					} else {
-					    result = n1 * (x - 2.625f / d1) * x + 0.984375f;
-					}
-					break;
+				// 	if (x < 1 / d1) {
+				// 	    result = n1 * x * x;
+				// 	} else if (x < 2 / d1) {
+				// 	    result = n1 * (x - 1.5f / d1) * x + 0.75f;
+				// 	} else if (x < 2.5 / d1) {
+				// 	    result = n1 * (x - 2.25f / d1) * x + 0.9375f;
+				// 	} else {
+				// 	    result = n1 * (x - 2.625f / d1) * x + 0.984375f;
+				// 	}
+				// 	break;
 			}
 			return result;
 		}
@@ -208,6 +209,8 @@ public class Tween {
 			RepeatDelay = repeatDelay;
 		}
 
+		// Overrides
+		
 		public override string ToString() {
 			return $"Tween.Info({Lifetime}, EasingStyle.{Style}, EasingDirection.{Direction}, {Repeats}, {UndoRepeats.ToString().ToLower()}, {RepeatDelay})";
 		}  
@@ -222,6 +225,10 @@ public class Tween {
 	// Entry Point
 	
 	public static void Main(string[] args) {
-		Tween test = new Tween(Tween, new Tween.Info());
+		Tween tw = new Tween(1, new Tween.Info())
+			.Add("Transparency", 0)
+			.Add("Size", 1)
+			.Add("Color", 255);
+		Console.WriteLine(tw);
 	}
 }
